@@ -42,9 +42,9 @@ public class UserRestController {
 
     @PostMapping
     public BaseRest<?> createNewUser(@RequestBody @Valid CreateUserDto createUserDto){
-        log.info("Dto = {}", createUserDto);
+        UserDto userDto = userService.createNewUser(createUserDto);
     return BaseRest.builder()
-            .data(userService.createNewUser(createUserDto))
+            .data(userDto)
             .status(true)
             .timestamp(LocalDateTime.now())
             .code(HttpStatus.OK.value())

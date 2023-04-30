@@ -13,15 +13,17 @@ public interface UserMapper {
     @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "id" )
     void insert(@Param("u") User user);
 //
-@SelectProvider (type = UserProvider.class, method = "selectAllSql")
-@Results(id = "userResultMapper", value = {
+    @SelectProvider (type = UserProvider.class, method = "selectAllSql")
+    @Results(id = "userResultMapper", value = {
         @Result(column = "is_student",property = "isStudent"),
         @Result(column = "student_card_id",property = "studentCardId")
-})
-List<User> select();
+    })
+    List<User> select();
+
     @SelectProvider(type = UserProvider.class, method = "selectById")
     @ResultMap("userResultMapper")
     Optional<User> selectById(@Param("id") Integer id);
+
     @Select("SELECT EXISTS (SELECT *FROM users WHERE id =#{id})")
     boolean existsById(@Param("id")Integer id);
 

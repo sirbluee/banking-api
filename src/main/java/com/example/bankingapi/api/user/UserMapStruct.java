@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Mapper(componentModel = "spring")
 public interface UserMapStruct {
-    User createUserDtoToUser(CreateUserDto createUserDto);
+//    User createUserDtoToUser(CreateUserDto createUserDto);
     UserDto userToUserDto(User user);
     User userDtoToUser(UserDto userDto);
+    User createUserDtoToUser(CreateUserDto createUserDto);
     PageInfo <UserDto> userPageInfoToUserDtoPageInfo(PageInfo<User> userPageInfo);
 }

@@ -17,9 +17,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto createNewUser(CreateUserDto createUserDto) {
-        User user = userMapStruct.createUserDtoToUser((createUserDto));
-        UserDto userDto = userMapStruct.userToUserDto(user);
+        User user = userMapStruct.createUserDtoToUser(createUserDto);
         userMapper.insert(user);
+
         return this.findUserById(user.getId());
     }
 
